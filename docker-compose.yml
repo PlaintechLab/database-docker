@@ -5,6 +5,10 @@ services:
         container_name: database
         volumes:
             - ./mysql:/var/lib/mysql
+            - "./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf"
+        command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        ports:
+            - 3306:3306
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
