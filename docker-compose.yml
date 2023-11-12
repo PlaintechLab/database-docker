@@ -1,0 +1,32 @@
+version: "3.7"
+services:
+    database:
+        platform: linux/x86_64
+        image: ${DB_IMAGE}:${DB_VERSION}
+        container_name: database
+        volumes:
+            - ./mysql:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_DATABASE: alonecodingDB
+        networks:
+            - ${DOCKER_NETWORK}
+    phpmyadmin:
+        container_name: phpmyadmin
+        image: phpmyadmin
+        restart: always
+        depends_on:
+            - database
+        environment:
+            - PMA_HOST=database
+            - PMA_ARBITRARY=1
+            - UPLOAD_LIMIT=500M
+        networks:
+            - ${DOCKER_NETWORK}
+
+networks:
+    backend:
+        driver: bridge
