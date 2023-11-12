@@ -26,7 +26,7 @@ then edit the `.env` file to change default values.
 | `MYSQL_USER`          | user          |
 | `DOCKER_NETWORK`      | backend       |
 | `DB_IMAGE`            | mysql         |
-| `DB_VERSION`          | 5.7           |
+| `DB_VERSION`          | 8.2           |
 
 ## Quick start
 
