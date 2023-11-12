@@ -62,7 +62,7 @@ docker-compose up -d phpmyadmin
 
 ### Upgrading Database version
 
-> **WARNING** : This may take some downtime to start a new Kong version.
+> **WARNING** : This may take some downtime to start a new Database version.
 
 1. Change `DB_VERSION` in `.env` file to a newer version.
 
